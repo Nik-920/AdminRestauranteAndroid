@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="green">#5ab507</color>
+    <color name="gris_oscuro">#404040</color>
+    <color name="gris_claro">#E7E7E7</color>
+
+    <color name="riachuelo_escondido">#606c48</color>
+    <color name="azul_atlantico">#31608e</color>
+    <color name="camino_de_rosas">#be7c8a</color>
+    <color name="princesa_purpura">#a65081</color>
+    <color name="fuego">#C85540</color>
+    <color name="brisa_de_invierno">#BEC3C9</color>
+    <color name="amor_secreto">#F1EAE0</color>
+    <color name="petalo_de_girasol">#EDC36D</color>
+    <color name="valle_dorado">#DFA712</color>
+    <color name="mar_infinito">#575755</color>
+
+</resources>
