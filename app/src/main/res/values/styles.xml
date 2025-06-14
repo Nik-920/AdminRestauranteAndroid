@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema general de la app -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- IMPORTANTE para que respete status bar y toolbar -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="windowActionBar">false</item> <!-- Desactiva ActionBar para usar Toolbar personalizado -->
+    </style>
+</resources>

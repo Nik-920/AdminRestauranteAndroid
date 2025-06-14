@@ -23,7 +23,7 @@ class SplashScreenActivity : AppCompatActivity() {
         // Ocultar el Menu de Notificaciones
         // Ocultar el Tulbar
         supportActionBar?.hide()
-        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        //this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         // Gif de Portada Principal
         Glide
