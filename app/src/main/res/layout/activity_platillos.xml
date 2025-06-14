@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Activity_Categorias_xml"
+    android:id="@+id/Activity_Platillos_xml"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gris_claro"
-    tools:context=".views.categoriascreen.CategoriasActivity">
+    tools:context=".views.platilloscreen.PlatillosActivity">
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPlatillos"
@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/rvCategorias"
+        android:contentDescription="@string/rvPlatillos"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -32,7 +32,7 @@
         app:fabCustomSize="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/black" />
+        app:tint="@color/black"
 
-
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

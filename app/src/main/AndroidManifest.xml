@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".views.platilloscreen.PlatillosActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.categoriascreen.CategoriasActivity"
             android:exported="false" />
         <activity

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">AdminRestaurante</string>
+    <string name="fab_description">Agregar nuevo elemento</string>
+
+    <string name="image_categorias">Imagen de Categorias</string>
+    <string name="image_platillos">Imagen de Platillos</string>
+
+    <string name="rvPlatillos">Lista de platillos disponibles</string>
+    <string name="rvCategorias">Lista de Categorias disponibles</string>
+
+    <string name="delete_button_description">Botón para borrar elementos</string>
 </resources>

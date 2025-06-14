@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.adminrestaurante.R
 import com.example.adminrestaurante.databinding.ActivityNavegacionBinding
 import com.example.adminrestaurante.views.categoriascreen.CategoriasActivity
+import com.example.adminrestaurante.views.platilloscreen.PlatillosActivity
 
 class NavegacionActivity : AppCompatActivity() {
 
@@ -22,7 +24,8 @@ class NavegacionActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
-        window.statusBarColor = resources.getColor(R.color.gris_oscuro)
+        // Cambiar el color de la barra de estado (forma recomendada)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
         binding.cvCategorias.setOnClickListener {
             var intent = Intent(this, CategoriasActivity::class.java)
@@ -30,8 +33,8 @@ class NavegacionActivity : AppCompatActivity() {
         }
 
         binding.cvPlatillos.setOnClickListener {
-            //var intent = Intent(this, PlatillosActivity::class.java)
-            //startActivity(intent)
+            var intent = Intent(this, PlatillosActivity::class.java)
+            startActivity(intent)
         }
     }
 }
