@@ -62,4 +62,7 @@ dependencies {
     // Toasty
     implementation("com.github.GrenderG:Toasty:1.5.2")
 
+    implementation ("com.google.android.material:material:1.11.0") // o versión actual
+
+
 }

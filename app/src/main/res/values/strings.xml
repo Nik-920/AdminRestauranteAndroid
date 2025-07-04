@@ -9,4 +9,36 @@
     <string name="rvCategorias">Lista de Categorias disponibles</string>
 
     <string name="delete_button_description">Botón para borrar elementos</string>
+
+    /*Activity Login String*/
+    <string name="strLogin">Iniciar Sesión</string>
+    <string name="desc_login_chef">Imagen de Icono de Login y register</string>
+    <string name="hint_email">Correo Electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="txtRegister">¿No tienes cuenta? REGISTRARTE</string>
+
+    /*Activity Register String*/
+    <string name="strRegister">Registrarse</string>
+    <string name="hint_phone">Teléfono</string>
+    <string name="hint_apellidoM">Apellido Materno</string>
+    <string name="hint_apellidoP">Apellido Paterno</string>
+    <string name="hint_nombre">Nombre</string>
+
+    /*Activity ITEM_RV_PLATILLO String*/
+    <string name="rvPlatillo">Nombre del Platillo</string>
+    <string name="rvDescripcion">Descripción del platillo</string>
+    <string name="rvCategoria">Categoría</string>
+    <string name="rvPrecio">S/0.0</string>
+    <string name="rvDesLapiz">Editar Item Platillo</string>
+    <string name="hint_rvDesElminitar">Eliminar Item Platillo</string>
+
+    /*Activity ITEM_RV_categoria String*/
+    <string name="rvDescripcionImageCategoria">Contiene Nombre de la categoría</string>
+    <string name="rvDesCatEliminar">Eliminar Item Categoría</string>
+    <string name="txtVNombreCategoria">Nombre Categoría</string>
+
+
+
+
+
 </resources>

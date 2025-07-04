@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Tema general de la app -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- IMPORTANTE para que respete status bar y toolbar -->
+    <!-- Tema general de la app con ActionBar -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Habilitar el ActionBar -->
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+
+        <!-- Respeto por la barra de estado y la toolbar -->
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:fitsSystemWindows">true</item>
-        <item name="windowActionBar">false</item> <!-- Desactiva ActionBar para usar Toolbar personalizado -->
+
+        <!-- Estilo personalizado para el ActionBar -->
+        <item name="actionBarStyle">@style/MyActionBarStyle</item>
+    </style>
+
+    <!-- Estilo del ActionBar -->
+    <style name="MyActionBarStyle" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="titleTextStyle">@style/MyActionBarTitleText</item>
+    </style>
+
+    <!-- Color del texto del título -->
+    <style name="MyActionBarTitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/black</item>
     </style>
 </resources>

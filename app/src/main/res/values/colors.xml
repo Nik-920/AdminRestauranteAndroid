@@ -22,5 +22,23 @@
     <color name="petalo_de_girasol">#EDC36D</color>
     <color name="valle_dorado">#DFA712</color>
     <color name="mar_infinito">#575755</color>
+    <color name="black_strong">#000000</color>
+
+    <color name="highlighted_color">#082b08</color>
+    <color name="base_color">#f3fcf1</color>
+
+    <color name="primary_color">#22731c</color>
+
+    <color name="primary_variant_color">#215f1c</color>
+    <color name="primary_on_color">#1b4e19</color>
+    <color name="button_green">#4CAF50</color>
+
+    <color name="secondary_color">#5fd355</color>
+    <color name="secondary_variant_color">#39b92e</color>
+    <color name="secondary_on_color">#2a9821</color>
+
+    <color name="tertiary_color">#e0fade</color>
+    <color name="tertiary_variant_color">#c5f2c0</color>
+    <color name="tertiary_on_color">#95e78e</color>
 
 </resources>

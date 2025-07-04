@@ -1,5 +1,4 @@
 package com.example.adminrestaurante.network
-
 import com.example.adminrestaurante.utils.Constantes
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

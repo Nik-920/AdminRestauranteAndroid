@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/valle_dorado"
+    android:background="@color/amor_secreto"
     tools:context=".views.navegacionscreen.NavegacionActivity">
 
     <!-- Tarjeta de Categorías -->

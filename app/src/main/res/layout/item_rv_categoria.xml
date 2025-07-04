@@ -12,56 +12,68 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvCategorias"
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        app:cardElevation="10dp"
-        app:cardCornerRadius="16dp"
-        app:cardBackgroundColor="@android:color/white"
+        android:layout_width="220dp"
+        android:layout_height="207dp"
         android:layout_margin="4dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_height="170dp"
+            android:layout_marginTop="10dp"
+            android:layout_margin="0dp"
+            >
 
             <ImageView
                 android:id="@+id/ivCategoria"
-                android:layout_width="0dp"
+                android:layout_width="174dp"
                 android:layout_height="120dp"
+                android:layout_margin="20dp"
+                android:contentDescription="@string/rvDescripcionImageCategoria"
                 android:scaleType="fitCenter"
-                android:contentDescription="Imagen de categoría"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.08" />
 
             <TextView
                 android:id="@+id/tvNomCategoria"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_margin="4dp"
                 android:gravity="center"
-                android:text="Nombre Categoría"
-                android:textStyle="bold"
-                android:textSize="14sp"
+                android:text="@string/txtVNombreCategoria"
                 android:textColor="#333333"
-                app:layout_constraintTop_toBottomOf="@id/ivCategoria"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/ivCategoria"
+                app:layout_constraintVertical_bias="0.809" />
 
             <ImageButton
                 android:id="@+id/ibtnBorrar"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:backgroundTint="@android:color/white"
-                android:elevation="4dp"
+                android:layout_width="51dp"
+                android:layout_height="51dp"
+                android:layout_margin="10dp"
                 android:background="@drawable/bg_circle_button"
-                android:src="@drawable/icon_bote_basura"
-                android:scaleType="centerInside"
+                android:backgroundTint="@android:color/white"
+                android:contentDescription="@string/rvDesCatEliminar"
+                android:elevation="4dp"
                 android:padding="6dp"
-                android:contentDescription="Eliminar categoría"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_bote_basura"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintHorizontal_bias="0.971"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.14" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/AppTheme"
     android:id="@+id/Activity_Categorias_xml"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,10 +11,10 @@
     tools:context=".views.categoriascreen.CategoriasActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPlatillos"
+        android:id="@+id/rvCategorias"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/fab"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

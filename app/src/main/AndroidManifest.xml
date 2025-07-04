@@ -15,24 +15,45 @@
         android:theme="@style/Theme.AdminRestaurante"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <!-- VISTA DE LOGIN COMO INICIO -->
+        <activity
+            android:name=".views.loginscreen.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".views.registerscreen.RegisterActivity"
+            android:exported="false" />
         <activity
             android:name=".views.platilloscreen.PlatillosActivity"
             android:exported="false" />
         <activity
+            android:name=".views.platilloscreen.PlatillosActivityUsu"
+            android:exported="false" />
+        <activity
             android:name=".views.categoriascreen.CategoriasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.cuentascreen.CuentasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.categoriascreen.CategoriasActivityUsu"
             android:exported="false" />
         <activity
             android:name=".views.navegacionscreen.NavegacionActivity"
             android:exported="false" />
         <activity
             android:name=".views.splashscreen.SplashScreenActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false" />
+        <activity
+            android:name=".views.splashscreen.SplashScreen1Activity"
+            android:exported="false" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
