@@ -37,7 +37,7 @@
             android:layout_height="55dp"
             android:src="@drawable/icon_carro_compra"
             android:scaleType="centerInside"
-            android:background="@color/amor_secreto"
+            android:background="@color/secondary_variant_color"
             android:contentDescription="BotonCarrito"
             />
 
@@ -45,7 +45,7 @@
             android:id="@+id/tvCuentaTotal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/amor_secreto"
+            android:background="@color/secondary_variant_color"
             android:gravity="center"
             android:hint="VER MI CUENTA"
             android:textColor="@color/white"

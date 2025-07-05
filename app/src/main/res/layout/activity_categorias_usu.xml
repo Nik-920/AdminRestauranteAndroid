@@ -37,7 +37,6 @@
             android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-
             />
 
         <RatingBar
@@ -46,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:stepSize="0.5"
-            android:progressTint="@color/valle_dorado"
+            android:progressTint="@color/secondary_variant_color"
             android:numStars="5" />
 
     </LinearLayout>
@@ -67,7 +66,7 @@
             android:layout_height="55dp"
             android:src="@drawable/icon_carro_compra"
             android:scaleType="centerInside"
-            android:background="@color/amor_secreto"
+            android:background="@color/secondary_variant_color"
             android:contentDescription="BotonCarrito"
             />
 
@@ -75,7 +74,7 @@
             android:id="@+id/tvCuentaTotal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/amor_secreto"
+            android:background="@color/secondary_variant_color"
             android:gravity="center"
             android:hint="VER MI CUENTA"
             android:textColor="@color/white"

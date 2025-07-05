@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="1dp"
+    android:layout_marginHorizontal="0dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="1dp"
+    app:cardUseCompatPadding="true"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="#FFFFFF">
+
+        <!-- Nombre completo -->
+        <TextView
+            android:id="@+id/tvUsuarioNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nombre ApellidoP ApellidoM"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#212121"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivEditar"/>
+
+        <!-- Correo -->
+        <TextView
+            android:id="@+id/tvUsuarioCorreo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="correo@dominio.com"
+            android:textSize="15sp"
+            android:textColor="#616161"
+            android:layout_marginTop="6dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@id/tvUsuarioNombre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivEditar"/>
+
+        <!-- Teléfono -->
+        <TextView
+            android:id="@+id/tvUsuarioTelefono"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Tel: 912345678"
+            android:textSize="15sp"
+            android:textColor="#757575"
+            android:layout_marginTop="4dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@id/tvUsuarioCorreo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivEditar"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <!-- Botón editar -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivEditar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="Editar"
+            android:src="@drawable/icon_edit"
+            android:background="#E3F2FD"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            app:tint="#1976D2"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.SmallComponent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivEliminar"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <!-- Botón eliminar -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivEliminar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="Eliminar"
+            android:src="@drawable/icon_bote_basura"
+            android:background="#FFEBEE"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            app:tint="#D32F2F"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.SmallComponent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

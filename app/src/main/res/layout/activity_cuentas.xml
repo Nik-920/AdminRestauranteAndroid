@@ -2,53 +2,62 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.cuentascreen.CuentasActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:contex=".views.cuentascreen.CuentasActivity">
+
+    <!-- Spinner para seleccionar número de mesa -->
+    <Spinner
+        android:id="@+id/spinnerMesa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
         android:id="@+id/tlCuenta"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="120dp"
-        android:weightSum="1"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/spinnerMesa"
         app:layout_constraintBottom_toTopOf="@+id/llCuentaTotal"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TableLayout>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <LinearLayout
         android:id="@+id/llCuentaTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/fuego"
+        android:background="@color/green"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:src="@drawable/icon_carro_compra"
             android:scaleType="centerInside"
-            android:background="@android:color/transparent" />
+            android:background="@color/secondary_variant_color"
+            android:contentDescription="BotonCarrito"
+            />
 
         <TextView
             android:id="@+id/tvCuentaTotal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/fuego"
+            android:background="@color/secondary_variant_color"
             android:gravity="center"
-            android:hint="Cuenta y Total cuenta"
+            android:hint="VER MI CUENTA"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

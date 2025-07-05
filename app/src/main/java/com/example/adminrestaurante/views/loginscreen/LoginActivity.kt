@@ -55,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
                 if (response.isSuccessful && response.body() != null) {
                     val usuarios = response.body()!!.datos
 
-                    // Verificar si es el admin hardcodeado
+                    // 1) Si es el ADMIN hardcodeado
                     if (email.equals("Admin@gmail.com", ignoreCase = true) && password == "123456789") {
                         Toasty.success(this@LoginActivity, "Bienvenido ADMIN", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@LoginActivity, SplashScreenActivity::class.java))
@@ -63,12 +63,14 @@ class LoginActivity : AppCompatActivity() {
                         return@runOnUiThread
                     }
 
-                    // Buscar usuario normal en la base de datos
-                    val user = usuarios.find { it.gmail == email && it.pasword == password }
-
+                    // 2) Si es un usuario “normal” que existe en la BD
+                    val user = usuarios.find { it.gmail.equals(email, true) && it.pasword == password }
                     if (user != null) {
                         Toasty.success(this@LoginActivity, "Bienvenido, ${user.nombreUsuario}", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@LoginActivity, SplashScreen1Activity::class.java))
+                        // Le pasamos su idUsuario para propagarlo a las pantallas de usuario
+                        val intent = Intent(this@LoginActivity, SplashScreen1Activity::class.java)
+                            .putExtra("idUsuario", user.idUsuario)
+                        startActivity(intent)
                         finish()
                     } else {
                         Toasty.error(this@LoginActivity, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show()
@@ -79,5 +81,4 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-
 }

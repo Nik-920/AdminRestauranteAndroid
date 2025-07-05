@@ -1,14 +1,15 @@
 package com.example.adminrestaurante.views.categoriascreen
 
-import com.example.adminrestaurante.R
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.adminrestaurante.R
 import com.example.adminrestaurante.models.Categoria
 import com.example.adminrestaurante.utils.Constantes
 
@@ -27,16 +28,16 @@ class AdaptadorCategoria(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val categoria = listaCategorias[position]
 
-        // Validar que imgCategoria no sea nulo o vacío antes de usar Glide
+        // Carga de imagen con Glide, limitando tamaño para evitar bloqueos
         val imagen = categoria.imgCategoria
         if (!imagen.isNullOrEmpty()) {
             Glide.with(context)
                 .load("${Constantes.PATH_IMG_CATEGORIAS}/$imagen")
-                .centerInside()
+                .override(184, 160)
+                .centerCrop()
                 .placeholder(R.drawable.icon_falta_foto)
                 .into(holder.ivCategoria)
         } else {
-            // Si no hay imagen, usar un ícono por defecto
             holder.ivCategoria.setImageResource(R.drawable.icon_falta_foto)
         }
 
@@ -49,9 +50,6 @@ class AdaptadorCategoria(
 
     override fun getItemCount(): Int = listaCategorias.size
 
-    /**
-     * Actualiza la lista interna y notifica cambios
-     */
     fun updateData(nuevasCategorias: List<Categoria>) {
         listaCategorias = nuevasCategorias
         notifyDataSetChanged()
@@ -59,7 +57,7 @@ class AdaptadorCategoria(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ivCategoria: ImageView = itemView.findViewById(R.id.ivCategoria)
-        val ibtnBorrar: ImageView = itemView.findViewById(R.id.ibtnBorrar)
+        val ibtnBorrar: ImageButton = itemView.findViewById(R.id.ibtnBorrar)
         val tvNomCategoria: TextView = itemView.findViewById(R.id.tvNomCategoria)
     }
 

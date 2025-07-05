@@ -1,9 +1,12 @@
 package com.example.adminrestaurante.views.categoriascreen
 
 import android.app.AlertDialog
+import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.adminrestaurante.R
 import com.example.adminrestaurante.databinding.ActivityCategoriasBinding
 import com.example.adminrestaurante.network.RetrofitClient
+import com.example.adminrestaurante.views.navegacionscreen.NavegacionActivity
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,11 +34,18 @@ class CategoriasActivity : AppCompatActivity(), AdaptadorCategoria.OnItemClicked
         // Configuración del ActionBar
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this@CategoriasActivity, R.color.green)))
+            setBackgroundDrawable(
+                ColorDrawable(
+                    ContextCompat.getColor(
+                        this@CategoriasActivity,
+                        R.color.green
+                    )
+                )
+            )
             title = "ADMINISTRAR CATEGORÍAS"
         }
 
-        // 1) Inicializar RecyclerView con adapter vacío
+        // Inicializar RecyclerView con adapter vacío
         binding.rvCategorias.layoutManager = GridLayoutManager(this, 2)
         adaptadorCategoria = AdaptadorCategoria(this, emptyList(), this)
         binding.rvCategorias.adapter = adaptadorCategoria
@@ -47,22 +58,31 @@ class CategoriasActivity : AppCompatActivity(), AdaptadorCategoria.OnItemClicked
     }
 
     private fun formularioAdd() {
-        val builder = AlertDialog.Builder(this)
         val vista = layoutInflater.inflate(R.layout.alert_dialog_add_categoria, null)
-        builder.setView(vista)
+        val dialog = AlertDialog.Builder(this)
+            .setView(vista)
+            .create()
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(false)
+        dialog.show()
 
-        val etNomCategoria = vista.findViewById<EditText>(R.id.etNomCategoria)
-        builder.setPositiveButton("ACEPTAR") { _, _ ->
-            val nombre = etNomCategoria.text.toString().trim()
+        val etNom = vista.findViewById<EditText>(R.id.etNomCategoria)
+        val btnGuardar = vista.findViewById<Button>(R.id.btnGuardar)
+        val btnCancelar = vista.findViewById<Button>(R.id.btnCancelar)
+
+        btnGuardar.setOnClickListener {
+            val nombre = etNom.text.toString().trim()
             if (nombre.isNotEmpty()) {
                 agregarCategoria(nombre)
+                dialog.dismiss()
             } else {
                 Toasty.error(this, "Debe ingresar un nombre de categoría", Toast.LENGTH_SHORT).show()
             }
         }
-        builder.setNegativeButton("CANCELAR", null)
-        builder.setCancelable(false)
-        builder.show()
+
+        btnCancelar.setOnClickListener {
+            dialog.dismiss()
+        }
     }
 
     private fun agregarCategoria(nomCategoria: String) {
@@ -70,10 +90,24 @@ class CategoriasActivity : AppCompatActivity(), AdaptadorCategoria.OnItemClicked
             val call = RetrofitClient.webService.agregarCategoria(nomCategoria)
             runOnUiThread {
                 if (call.isSuccessful && call.body()?.codigo == "200") {
-                    Toasty.success(this@CategoriasActivity, "Categoría agregada correctamente", Toast.LENGTH_SHORT).show()
-                    obtenerCategorias()
+                    Toasty.success(
+                        this@CategoriasActivity,
+                        "Categoría agregada correctamente",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    // ➤ Volver a la vista NavegacionActivity
+                    val intent = Intent(this@CategoriasActivity, NavegacionActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    finish()
+
                 } else {
-                    Toasty.error(this@CategoriasActivity, "Error al agregar categoría", Toast.LENGTH_SHORT).show()
+                    Toasty.error(
+                        this@CategoriasActivity,
+                        "Error al agregar categoría",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
@@ -84,7 +118,6 @@ class CategoriasActivity : AppCompatActivity(), AdaptadorCategoria.OnItemClicked
             val call = RetrofitClient.webService.obtenerCategorias()
             runOnUiThread {
                 if (call.isSuccessful && call.body()?.codigo == "200") {
-                    // 2) Refrescar el adapter en lugar de reinstanciarlo
                     val categorias = call.body()!!.datos
                     adaptadorCategoria.updateData(categorias)
                 } else {

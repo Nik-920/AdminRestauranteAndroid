@@ -26,11 +26,12 @@ class CategoriasActivityUsu : AppCompatActivity(), AdaptadorCategoriaUsu.OnItemC
 
     private lateinit var binding: ActivityCategoriasUsuBinding
     private lateinit var adaptador: AdaptadorCategoriaUsu
+    private lateinit var utils: Utils
     private val listaCategorias = ArrayList<Categoria>()
 
     private val startActivityIntent =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            // Actualizar cuenta al regresar porque el usuario pudo haber realizado cambios
+            // Actualiza cuenta al volver
             Utils(this, binding.tvCuentaTotal).validarCuentaTotal()
         }
 
@@ -39,30 +40,44 @@ class CategoriasActivityUsu : AppCompatActivity(), AdaptadorCategoriaUsu.OnItemC
         binding = ActivityCategoriasUsuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // ActionBar estilizado
+        // 1) Instanciar Utils con el TextView de cuenta total
+        utils = Utils(this, binding.tvCuentaTotal)
+
+        // 2) Leer idUsuario del Intent y guardarlo
+        val idUsuario = intent.getIntExtra("idUsuario", 0)
+        if (idUsuario != 0) {
+            utils.setIdUsuario(idUsuario)
+        }
+
+        // Estilo del ActionBar
         val titulo = SpannableString("D'ZUASOS : RESTAURANTE")
         titulo.setSpan(
             ForegroundColorSpan(ContextCompat.getColor(this, R.color.black)),
             0, titulo.length, 0
         )
         supportActionBar?.apply {
-            setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this@CategoriasActivityUsu, R.color.amor_secreto)))
+            setBackgroundDrawable(
+                ColorDrawable(ContextCompat.getColor(this@CategoriasActivityUsu, R.color.amor_secreto))
+            )
             title = titulo
         }
 
-        // RecyclerView
+        // Setup RecyclerView
         adaptador = AdaptadorCategoriaUsu(this, listaCategorias, this)
         binding.rvCategorias.layoutManager = GridLayoutManager(this, 2)
         binding.rvCategorias.adapter = adaptador
 
-        // Cargar datos
+        // Carga inicial
         obtenerCategoriaUsu()
 
-        // Mostrar cuenta
-        Utils(this, binding.tvCuentaTotal).validarCuentaTotal()
+        // Mostrar cuenta actual
+        utils.validarCuentaTotal()
         binding.tvCuentaTotal.setOnClickListener {
-            val intent = Intent(this, CuentasActivity::class.java)
-            intent.putExtra("activity", "cat")
+            // Paso idUsuario al siguiente Activity para que lo guarde también
+            val intent = Intent(this, CuentasActivity::class.java).apply {
+                putExtra("activity", "cat")
+                putExtra("idUsuario", utils.getIdUsuario())
+            }
             startActivityIntent.launch(intent)
         }
     }
@@ -72,9 +87,8 @@ class CategoriasActivityUsu : AppCompatActivity(), AdaptadorCategoriaUsu.OnItemC
             val call = RetrofitClient.webService.obtenerCategorias()
             runOnUiThread {
                 if (call.isSuccessful && call.body()?.codigo == "200") {
-                    val nuevas = call.body()!!.datos
                     listaCategorias.clear()
-                    listaCategorias.addAll(nuevas)
+                    listaCategorias.addAll(call.body()!!.datos)
                     adaptador.notifyDataSetChanged()
                 } else {
                     Toasty.error(
@@ -87,10 +101,11 @@ class CategoriasActivityUsu : AppCompatActivity(), AdaptadorCategoriaUsu.OnItemC
         }
     }
 
-
     override fun verPlatillosCategoria(idCategoria: Int) {
-        val intent = Intent(this, PlatillosActivityUsu::class.java)
-        intent.putExtra("idCategoria", idCategoria)
+        val intent = Intent(this, PlatillosActivityUsu::class.java).apply {
+            putExtra("idCategoria", idCategoria)
+            putExtra("idUsuario", utils.getIdUsuario())
+        }
         startActivity(intent)
     }
 }

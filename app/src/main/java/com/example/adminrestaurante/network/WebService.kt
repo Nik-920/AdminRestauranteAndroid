@@ -1,6 +1,7 @@
 package com.example.adminrestaurante.network
 
 import com.example.adminrestaurante.models.Platillos
+import com.example.adminrestaurante.models.RespuestaPedido
 import com.example.adminrestaurante.models.Usuario
 import com.example.adminrestaurante.network.response.*
 import retrofit2.Response
@@ -97,17 +98,31 @@ interface WebService {
         @Path("id") idPedido: Int
     ): Response<PedidoResponse>
 
-    @FormUrlEncoded
-    @POST("/pedidos")
-    suspend fun crearPedido(
-        @Field("numeroMesa") numeroMesa: Int,
-        @Field("idUsuario") idUsuario: Int
-    ): Response<PedidoResponse>
 
     @DELETE("/pedidos/{id}")
     suspend fun borrarPedido(
         @Path("id") idPedido: Int
     ): Response<PedidoResponse>
+
+
+
+    @FormUrlEncoded
+    @POST("/pedidos")
+    suspend fun crearPedido(
+        @Field("numeroMesa")  numeroMesa: Int,
+        @Field("idUsuario")   idUsuario: Int,
+        @Field("cuentaTotal") cuentaTotal: Double      // <-- nuevo campo
+    ): Response<RespuestaPedido>
+
+        /** ─── DETALLE PEDIDOS ─── **/
+        @FormUrlEncoded
+        @POST("/detalles")            // <-- aquí debe coincidir con tu router: app.post('/detalles', ...)
+        suspend fun crearDetalle(
+            @Field("idPedido") idPedido: Int,
+            @Field("idPlatillos") idPlatillos: Int,
+            @Field("cantidad") cantidad: Int
+        ): Response<Any>
+
 
 
     /** ─── DETALLE PEDIDOS ─────────────────────────────────────── **/
@@ -120,13 +135,6 @@ interface WebService {
         @Path("idPedido") idPedido: Int
     ): Response<DetallePedidoResponse>
 
-    @FormUrlEncoded
-    @POST("/detalles")
-    suspend fun crearDetalle(
-        @Field("idPedido") idPedido: Int,
-        @Field("idPlatillos") idPlatillos: Int,
-        @Field("cantidad") cantidad: Int
-    ): Response<DetallePedidoResponse>
 
     @FormUrlEncoded
     @PUT("/detalles/{id}")

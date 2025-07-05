@@ -1,39 +1,58 @@
 package com.example.adminrestaurante.utils
-
 import android.content.Context
 import android.widget.TextView
-import kotlin.apply
-import kotlin.text.isEmpty
-import kotlin.text.toDouble
-
-class Utils(private val context: Context, private val tvCuentaTotal: TextView) {
+class Utils(private val context: Context, private val tvCuentaTotal: TextView?) {
     private val prefs = context.getSharedPreferences(Constantes.SHARED_PREFERENCES, Context.MODE_PRIVATE)
 
+    /** Agrega un platillo a la cuenta y actualiza total **/
     fun agregarPlatilloCuenta(nom: String, precio: Double) {
         val prevList = prefs.getString("platillos", "") ?: ""
-        val newList = if (prevList.isEmpty()) "$nom-$precio" else "$prevList, $nom-$precio"
-        val total = prefs.getString("total", "0")!!.toDouble().plus(precio)
-        prefs.edit().apply {
-            putString("platillos", newList)
-            putString("total", total.toString())
-            apply()
-        }
+        val newList = if (prevList.isBlank()) "$nom-$precio" else "$prevList, $nom-$precio"
+        val total = prefs.getString("total", "0")!!.toDouble() + precio
+
+        prefs.edit()
+            .putString("platillos", newList)
+            .putString("total", total.toString())
+            .apply()
+
         validarCuentaTotal()
     }
 
-    fun obtenerPlatillos(): String = prefs.getString("platillos", "") ?: ""
-    fun obtenerTotalCuenta(): Double = prefs.getString("total", "0")!!.toDouble()
+    /** Recupera la lista de platillos guardada **/
+    fun obtenerPlatillos(): String =
+        prefs.getString("platillos", "") ?: ""
 
+    /** Recupera el total acumulado **/
+    fun obtenerTotalCuenta(): Double =
+        prefs.getString("total", "0")!!.toDouble()
+
+    /** Muestra el texto de “Enviar Pedido” con el total **/
     fun validarCuentaTotal() {
-        val total = obtenerTotalCuenta()
-        tvCuentaTotal.text = if (total > 0)
-            "VER MI CUENTA: S/($total)"
-        else
-            "PAGAR CUENTA: S/($total)"
+        tvCuentaTotal?.text = "Enviar Pedido: S/(${String.format("%.2f", obtenerTotalCuenta())})"
     }
 
+    /** Limpia solo los datos de platillos y total; **no toca** mesa o usuario **/
     fun limpiarCuenta() {
-        prefs.edit().clear().apply()
+        prefs.edit()
+            .remove("platillos")
+            .remove("total")
+            .apply()
         validarCuentaTotal()
     }
+
+    // — Manejo de número de mesa —
+    fun setNumeroMesa(mesa: Int) {
+        prefs.edit().putInt("numeroMesa", mesa).apply()
+    }
+    fun getNumeroMesa(): Int =
+        prefs.getInt("numeroMesa", 1)
+
+    // — Manejo de idUsuario —
+    fun setIdUsuario(id: Int) {
+        if (id > 0) {
+            prefs.edit().putInt("idUsuario", id).apply()
+        }
+    }
+    fun getIdUsuario(): Int =
+        prefs.getInt("idUsuario", 1)  // por defecto 1 si no se estableció
 }

@@ -10,7 +10,6 @@ import com.example.adminrestaurante.R
 import com.example.adminrestaurante.databinding.ActivitySplashScreen1Binding
 import com.example.adminrestaurante.utils.Constantes
 import com.example.adminrestaurante.views.categoriascreen.CategoriasActivityUsu
-import kotlin.jvm.java
 
 class SplashScreen1Activity : AppCompatActivity() {
 
@@ -21,21 +20,24 @@ class SplashScreen1Activity : AppCompatActivity() {
         binding = ActivitySplashScreen1Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Ocultar Tullbar
         supportActionBar?.hide()
-        Glide
-            .with(this)
+        Glide.with(this)
             .load(R.drawable.restautant)
             .into(binding.gifLogo)
 
         cambiarActivityUsu()
-
     }
 
-    fun cambiarActivityUsu(){
+    private fun cambiarActivityUsu() {
+        // 1) recupera el id que vino desde LoginActivity
+        val idUsuario = intent.getIntExtra("idUsuario", 0)
+
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, CategoriasActivityUsu::class.java)
-            startActivity(intent)
+            // 2) al crear el Intent hacia CategoriasActivityUsu, lo re-empaquetas
+            Intent(this, CategoriasActivityUsu::class.java).also {
+                it.putExtra("idUsuario", idUsuario)
+                startActivity(it)
+            }
             finish()
         }, Constantes.DURACION_SPLASH_SCREEN)
     }

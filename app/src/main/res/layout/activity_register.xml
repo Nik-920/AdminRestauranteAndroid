@@ -7,13 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/base_color"
-    android:padding="60dp"
+    android:padding="24dp"
     tools:context=".views.registerscreen.RegisterActivity">
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="none"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,105 +25,171 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:paddingBottom="24dp">
+            android:paddingBottom="32dp">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_marginTop="48dp"
-                android:layout_marginBottom="24dp"
-                android:contentDescription="@string/desc_login_chef"
-                app:srcCompat="@drawable/login_chef2" />
+            <!-- Logo con sombra suave -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="40dp"
+                app:cardCornerRadius="90dp"
+                app:cardElevation="8dp"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:contentDescription="@string/desc_login_chef"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/login_chef2" />
+
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Campo Nombre -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="16dp"
                 android:hint="@string/hint_nombre"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeWidth="2dp"
-                app:boxBackgroundColor="@color/tertiary_color">
+                app:boxStrokeColor="@color/primary_color"
+                app:boxBackgroundColor="@color/tertiary_color"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:hintTextColor="@color/primary_variant_color"
+                app:startIconDrawable="@android:drawable/ic_menu_edit"
+                app:startIconTint="@color/primary_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:textColor="@color/black" />
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:paddingVertical="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Campo Apellido Paterno -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="16dp"
                 android:hint="@string/hint_apellidoP"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeWidth="2dp"
-                app:boxBackgroundColor="@color/tertiary_color">
+                app:boxStrokeColor="@color/primary_color"
+                app:boxBackgroundColor="@color/tertiary_color"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:hintTextColor="@color/primary_variant_color"
+                app:startIconDrawable="@android:drawable/ic_menu_edit"
+                app:startIconTint="@color/primary_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etApellidoP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:textColor="@color/black" />
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:paddingVertical="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Campo Apellido Materno -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="16dp"
                 android:hint="@string/hint_apellidoM"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeWidth="2dp"
-                app:boxBackgroundColor="@color/tertiary_color">
+                app:boxStrokeColor="@color/primary_color"
+                app:boxBackgroundColor="@color/tertiary_color"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:hintTextColor="@color/primary_variant_color"
+                app:startIconDrawable="@android:drawable/ic_menu_edit"
+                app:startIconTint="@color/primary_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etApellidoM"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColor="@color/black" />
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:paddingVertical="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Campo Teléfono -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="16dp"
                 android:hint="@string/hint_phone"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeWidth="2dp"
-                app:boxBackgroundColor="@color/tertiary_color">
+                app:boxStrokeColor="@color/primary_color"
+                app:boxBackgroundColor="@color/tertiary_color"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:hintTextColor="@color/primary_variant_color"
+                app:startIconDrawable="@android:drawable/stat_sys_phone_call"
+                app:startIconTint="@color/primary_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etTelefono"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:paddingVertical="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Campo Correo -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="16dp"
                 android:hint="@string/hint_email"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeWidth="2dp"
-                app:boxBackgroundColor="@color/tertiary_color">
+                app:boxStrokeColor="@color/primary_color"
+                app:boxBackgroundColor="@color/tertiary_color"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:hintTextColor="@color/primary_variant_color"
+                app:startIconDrawable="@android:drawable/ic_dialog_email"
+                app:startIconTint="@color/primary_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:paddingVertical="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Campo Contraseña -->
@@ -130,23 +197,35 @@
                 android:id="@+id/tilPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="32dp"
                 android:hint="@string/hint_password"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeWidth="2dp"
+                app:boxStrokeColor="@color/primary_color"
                 app:passwordToggleEnabled="true"
-                app:boxBackgroundColor="@color/tertiary_color">
+                app:boxBackgroundColor="@color/tertiary_color"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:hintTextColor="@color/primary_variant_color"
+                app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
+                app:startIconTint="@color/primary_color"
+                app:passwordToggleTint="@color/primary_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:paddingVertical="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Botón Registrar -->
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonEnter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -156,8 +235,11 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:paddingVertical="12dp"
-                android:background="@drawable/rounded_button" />
+                android:paddingVertical="16dp"
+                app:cornerRadius="12dp"
+                app:elevation="4dp"
+                app:rippleColor="@color/primary_variant_color"
+                style="@style/Widget.MaterialComponents.Button" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -107,6 +107,5 @@
             app:layout_constraintHorizontal_bias="0.986"
             app:layout_constraintStart_toEndOf="@+id/tvNombrePlatillo"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

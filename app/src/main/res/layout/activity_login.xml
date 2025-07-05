@@ -5,53 +5,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="60dp"
+    android:padding="32dp"
     android:background="@color/base_color"
     tools:context=".views.loginscreen.LoginActivity">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginTop="158dp"
+    <!-- Logo con sombra suave -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        app:cardCornerRadius="90dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/desc_login_chef"
-        app:srcCompat="@drawable/login_chef2" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:contentDescription="@string/desc_login_chef"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/login_chef2" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Campo Email -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:hint="@string/hint_email"
         app:boxBackgroundMode="outline"
         app:boxStrokeWidth="2dp"
+        app:boxStrokeColor="@color/primary_color"
         app:boxBackgroundColor="@color/tertiary_color"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:hintTextColor="@color/primary_variant_color"
+        app:startIconDrawable="@android:drawable/ic_dialog_email"
+        app:startIconTint="@color/primary_color"
+        app:layout_constraintTop_toBottomOf="@+id/cardLogo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:textColor="@color/black_strong" />
+            android:textColor="@color/black_strong"
+            android:textSize="16sp"
+            android:paddingVertical="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Campo Contraseña -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:hint="@string/hint_password"
         app:boxBackgroundMode="outline"
         app:boxStrokeWidth="2dp"
+        app:boxStrokeColor="@color/primary_color"
         app:boxBackgroundColor="@color/tertiary_color"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:hintTextColor="@color/primary_variant_color"
+        app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
+        app:startIconTint="@color/primary_color"
         app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/primary_color"
         app:layout_constraintTop_toBottomOf="@+id/tilEmail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -61,27 +94,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingVertical="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <!-- Botón Login -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonEnter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="20dp"
         android:backgroundTint="@color/primary_color"
         android:text="@string/strLogin"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:paddingVertical="12dp"
-        android:background="@drawable/rounded_button"
+        android:paddingVertical="16dp"
+        app:cornerRadius="12dp"
+        app:elevation="4dp"
+        app:rippleColor="@color/primary_variant_color"
+        style="@style/Widget.MaterialComponents.Button"
         app:layout_constraintTop_toBottomOf="@+id/tilPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
+    <!-- Botón Registrar -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/txtRegistrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,8 +131,15 @@
         android:text="@string/txtRegister"
         android:textAlignment="center"
         android:textColor="@color/primary_variant_color"
-        android:textSize="13sp"
+        android:textSize="14sp"
         android:textStyle="bold"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="24dp"
+        app:cornerRadius="8dp"
+        app:rippleColor="@color/tertiary_color"
+        app:strokeColor="@color/primary_variant_color"
+        app:strokeWidth="1dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         app:layout_constraintTop_toBottomOf="@+id/buttonEnter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
