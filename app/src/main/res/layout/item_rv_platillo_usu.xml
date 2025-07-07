@@ -37,8 +37,9 @@
                 android:layout_weight="0.2"
                 android:gravity="center"
                 android:textSize="18sp"
-                android:textStyle="bold|italic"
-                android:hint="$0.0" />
+                android:textStyle="bold"
+                android:textColor="#388E3C"
+                android:hint="S/0.0" />
 
             <ImageView
                 android:id="@+id/ivAddLista"

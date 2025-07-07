@@ -27,7 +27,6 @@ class PlatillosActivityUsu : AppCompatActivity(), AdaptadorPlatillosUsu.OnItemCl
 
     private val startActivityIntent =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            // Actualizar cuenta al regresar porque el usuario pudo haber realizado cambios
             Utils(this, binding.tvCuentaTotal).validarCuentaTotal()
         }
 
@@ -61,6 +60,7 @@ class PlatillosActivityUsu : AppCompatActivity(), AdaptadorPlatillosUsu.OnItemCl
         binding.tvCuentaTotal.setOnClickListener {
             val intent = Intent(this, CuentasActivity::class.java)
             intent.putExtra("activity", "plat")
+            intent.putExtra("idUsuario", Utils(this, null).getIdUsuario())
             startActivityIntent.launch(intent)
         }
     }

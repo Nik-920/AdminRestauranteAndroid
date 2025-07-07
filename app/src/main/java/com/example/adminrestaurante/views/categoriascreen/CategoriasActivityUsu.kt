@@ -5,7 +5,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -29,10 +28,11 @@ class CategoriasActivityUsu : AppCompatActivity(), AdaptadorCategoriaUsu.OnItemC
     private lateinit var utils: Utils
     private val listaCategorias = ArrayList<Categoria>()
 
-    private val startActivityIntent =
+    // Usamos un launcher para capturar cuando regresamos de CuentasActivity
+    private val startCuentaLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            // Actualiza cuenta al volver
-            Utils(this, binding.tvCuentaTotal).validarCuentaTotal()
+            // Siempre re-lee el total al volver
+            utils.validarCuentaTotal()
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,12 +44,11 @@ class CategoriasActivityUsu : AppCompatActivity(), AdaptadorCategoriaUsu.OnItemC
         utils = Utils(this, binding.tvCuentaTotal)
 
         // 2) Leer idUsuario del Intent y guardarlo
-        val idUsuario = intent.getIntExtra("idUsuario", 0)
-        if (idUsuario != 0) {
-            utils.setIdUsuario(idUsuario)
+        intent.getIntExtra("idUsuario", 0).takeIf { it > 0 }?.let {
+            utils.setIdUsuario(it)
         }
 
-        // Estilo del ActionBar
+        // 3) Configurar ActionBar
         val titulo = SpannableString("D'ZUASOS : RESTAURANTE")
         titulo.setSpan(
             ForegroundColorSpan(ContextCompat.getColor(this, R.color.black)),
@@ -60,26 +59,34 @@ class CategoriasActivityUsu : AppCompatActivity(), AdaptadorCategoriaUsu.OnItemC
                 ColorDrawable(ContextCompat.getColor(this@CategoriasActivityUsu, R.color.amor_secreto))
             )
             title = titulo
+            //setDisplayHomeAsUpEnabled(true)
         }
 
-        // Setup RecyclerView
+        // 4) RecyclerView
         adaptador = AdaptadorCategoriaUsu(this, listaCategorias, this)
         binding.rvCategorias.layoutManager = GridLayoutManager(this, 2)
         binding.rvCategorias.adapter = adaptador
 
-        // Carga inicial
+        // 5) Cargar categorías
         obtenerCategoriaUsu()
 
-        // Mostrar cuenta actual
+        // 6) Mostrar el total actual
         utils.validarCuentaTotal()
+
+        // 7) Lanzar CuentasActivity con resultado
         binding.tvCuentaTotal.setOnClickListener {
-            // Paso idUsuario al siguiente Activity para que lo guarde también
             val intent = Intent(this, CuentasActivity::class.java).apply {
                 putExtra("activity", "cat")
                 putExtra("idUsuario", utils.getIdUsuario())
             }
-            startActivityIntent.launch(intent)
+            startCuentaLauncher.launch(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Aseguramos refrescar el total al regresar de PlatillosActivityUsu
+        utils.validarCuentaTotal()
     }
 
     private fun obtenerCategoriaUsu() {
@@ -94,7 +101,7 @@ class CategoriasActivityUsu : AppCompatActivity(), AdaptadorCategoriaUsu.OnItemC
                     Toasty.error(
                         this@CategoriasActivityUsu,
                         "Error al obtener categorías",
-                        Toast.LENGTH_SHORT
+                        Toasty.LENGTH_SHORT
                     ).show()
                 }
             }
@@ -102,6 +109,7 @@ class CategoriasActivityUsu : AppCompatActivity(), AdaptadorCategoriaUsu.OnItemC
     }
 
     override fun verPlatillosCategoria(idCategoria: Int) {
+        // Ahora usamos launcher al abrir Platillos para que onResume() detecte el regreso
         val intent = Intent(this, PlatillosActivityUsu::class.java).apply {
             putExtra("idCategoria", idCategoria)
             putExtra("idUsuario", utils.getIdUsuario())

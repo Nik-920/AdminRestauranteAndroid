@@ -55,4 +55,18 @@ class Utils(private val context: Context, private val tvCuentaTotal: TextView?) 
     }
     fun getIdUsuario(): Int =
         prefs.getInt("idUsuario", 1)  // por defecto 1 si no se estableció
+
+    // en Utils.kt
+
+    /** Reemplaza por completo la lista de platillos y recalcula el total */
+    fun setPlatillosYTotal(platillos: List<Pair<String, Double>>) {
+        val nuevosStrings = platillos.joinToString(", ") { "${it.first}-${it.second}" }
+        val total = platillos.sumOf { it.second }
+        prefs.edit()
+            .putString("platillos", nuevosStrings)
+            .putString("total", total.toString())
+            .apply()
+        validarCuentaTotal()
+    }
+
 }

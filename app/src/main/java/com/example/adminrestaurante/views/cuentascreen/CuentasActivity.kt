@@ -1,6 +1,7 @@
 package com.example.adminrestaurante.views.cuentascreen
 
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.SpannableString
@@ -8,6 +9,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.MenuItem
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageButton
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +31,7 @@ class CuentasActivity : AppCompatActivity() {
     private lateinit var utils: Utils
     private var actividadPrevia: String? = null
     private var nameToId: Map<String, Int> = emptyMap()
+    private val listaEnPantalla = mutableListOf<Pair<String, Double>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,24 +91,62 @@ class CuentasActivity : AppCompatActivity() {
         }
     }
 
-    // Construye las filas de la tabla
+//    // Construye las filas de la tabla
+//    private fun llenarTabla() {
+//        binding.tlCuenta.removeAllViews()
+//        utils.obtenerPlatillos()
+//            .split(",")
+//            .map { it.trim() }
+//            .filter { it.isNotEmpty() }
+//            .forEach { texto ->
+//                TableRow(this).apply {
+//                    addView(TextView(this@CuentasActivity).apply {
+//                        setPadding(12, 12, 12, 12)
+//                        textSize = 18f
+//                        text = texto
+//                    })
+//                    binding.tlCuenta.addView(this)
+//                }
+//            }
+//    }
+
+
     private fun llenarTabla() {
-        binding.tlCuenta.removeAllViews()
+        listaEnPantalla.clear()
         utils.obtenerPlatillos()
             .split(",")
             .map { it.trim() }
             .filter { it.isNotEmpty() }
-            .forEach { texto ->
-                TableRow(this).apply {
-                    addView(TextView(this@CuentasActivity).apply {
-                        setPadding(12, 12, 12, 12)
-                        textSize = 18f
-                        text = texto
-                    })
-                    binding.tlCuenta.addView(this)
-                }
+            .forEach { item ->
+                val parts = item.split("-", limit = 2)
+                val nombre = parts[0]
+                val precio = parts.getOrNull(1)?.toDoubleOrNull() ?: 0.0
+                listaEnPantalla += nombre to precio
             }
+
+        binding.tlCuenta.removeAllViews()
+
+        listaEnPantalla.forEachIndexed { index, (nombre, precio) ->
+            val fila = TableRow(this).apply {
+                addView(TextView(this@CuentasActivity).apply {
+                    setPadding(12,12,12,12)
+                    textSize = 18f
+                    text = "$nombre – S/ $precio"
+                })
+                addView(ImageButton(this@CuentasActivity).apply {
+                    setImageResource(R.drawable.botonx)
+                    setBackgroundColor(Color.TRANSPARENT)
+                    setOnClickListener {
+                        listaEnPantalla.removeAt(index)
+                        utils.setPlatillosYTotal(listaEnPantalla)
+                        llenarTabla()
+                    }
+                })
+            }
+            binding.tlCuenta.addView(fila)
+        }
     }
+
 
     // Pre-carga el mapa de nombrePlatillo → idPlatillo
     private fun cargarMapaPlatillos() {

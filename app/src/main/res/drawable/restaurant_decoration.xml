@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="40dp"
+    android:viewportWidth="120"
+    android:viewportHeight="40"
+    android:tint="?attr/colorOnSurface">
+
+    <!-- Decoración ornamental con elementos de restaurante -->
+
+    <!-- Línea decorativa izquierda -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M5,20 L35,20"
+        android:strokeWidth="2"
+        android:strokeColor="@android:color/black"/>
+
+    <!-- Tenedor decorativo izquierdo -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M15,12 L15,28 M13,12 L13,18 M17,12 L17,18"/>
+
+    <!-- Plato central -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M60,20 A8,8 0 1,1 60,20.01 Z"/>
+
+    <!-- Elementos decorativos en el plato -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M55,20 A2,2 0 1,1 55,20.01 Z"/>
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M65,20 A2,2 0 1,1 65,20.01 Z"/>
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M60,16 A2,2 0 1,1 60,16.01 Z"/>
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M60,24 A2,2 0 1,1 60,24.01 Z"/>
+
+    <!-- Cuchillo decorativo derecho -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M105,12 L105,28 M103,12 L107,12"/>
+
+    <!-- Línea decorativa derecha -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M85,20 L115,20"
+        android:strokeWidth="2"
+        android:strokeColor="@android:color/black"/>
+
+    <!-- Detalles ornamentales -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M40,18 L45,20 L40,22 Z"/>
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M80,18 L75,20 L80,22 Z"/>
+
+    <!-- Pequeñas estrellas decorativas -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M25,15 L26,17 L28,17 L26.5,18.5 L27,20 L25,19 L23,20 L23.5,18.5 L22,17 L24,17 Z"/>
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M95,15 L96,17 L98,17 L96.5,18.5 L97,20 L95,19 L93,20 L93.5,18.5 L92,17 L94,17 Z"/>
+
+    <!-- Hojas decorativas -->
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M50,10 Q52,8 54,10 Q52,12 50,10 Z"/>
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M50,30 Q52,28 54,30 Q52,32 50,30 Z"/>
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M66,10 Q68,8 70,10 Q68,12 66,10 Z"/>
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M66,30 Q68,28 70,30 Q68,32 66,30 Z"/>
+
+</vector>

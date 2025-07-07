@@ -2,62 +2,134 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:contex=".views.cuentascreen.CuentasActivity">
+    android:background="@color/amor_secreto"
+    android:padding="16dp"
+    tools:context=".views.cuentascreen.CuentasActivity">
 
-    <!-- Spinner para seleccionar número de mesa -->
-    <Spinner
-        android:id="@+id/spinnerMesa"
-        android:layout_width="wrap_content"
+    <!-- Contenedor para el título y spinner -->
+    <LinearLayout
+        android:id="@+id/llSpinnerContainer"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="142dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TableLayout
-        android:id="@+id/tlCuenta"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        <TextView
+            android:id="@+id/tvSpinnerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seleccione número de mesa:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginEnd="12dp" />
+
+        <Spinner
+            android:id="@+id/spinnerMesa"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <!-- Separador visual -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/spinnerMesa"
-        app:layout_constraintBottom_toTopOf="@+id/llCuentaTotal"
+        android:background="@color/valle_dorado"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/llSpinnerContainer" />
 
+    <!-- Título para la tabla de cuentas -->
+    <TextView
+        android:id="@+id/tvCuentaTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Detalles de la Cuenta"
+        android:textAppearance="@color/black"
+        android:background="@color/secondary_variant_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <!-- TableLayout con fondo mejorado -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/llCuentaTotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCuentaTitle">
+
+        <TableLayout
+            android:id="@+id/tlCuenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1" />
+
+    </ScrollView>
+
+    <!-- LinearLayout del total con diseño mejorado -->
     <LinearLayout
         android:id="@+id/llCuentaTotal"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/green"
-        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="6dp"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        android:background="@color/secondary_variant_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:src="@drawable/icon_carro_compra"
+            android:id="@+id/btnCarrito"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_margin="4dp"
+            android:contentDescription="Botón Carrito"
+            android:elevation="2dp"
             android:scaleType="centerInside"
-            android:background="@color/secondary_variant_color"
-            android:contentDescription="BotonCarrito"
-            />
+            android:src="@drawable/icon_carro_compra" />
 
         <TextView
             android:id="@+id/tvCuentaTotal"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="@color/secondary_variant_color"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:hint="VER MI CUENTA"
-            android:textColor="@color/white"
+            android:textAppearance="@color/black"
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:background="@color/secondary_variant_color"
             android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

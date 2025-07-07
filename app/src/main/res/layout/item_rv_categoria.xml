@@ -1,89 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvCategorias"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:padding="4dp"
-    android:orientation="vertical"
-    android:gravity="center">
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    app:cardUseCompatPadding="true">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvCategorias"
-        android:layout_width="184dp"
-        android:layout_height="199dp"
-        android:layout_margin="4dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="2dp"
-        app:cardUseCompatPadding="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="200dp"
+        android:layout_height="161dp"
+        android:background="@android:color/white"
+        android:padding="8dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp">
+        <!-- Botón de eliminar -->
+        <ImageButton
+            android:id="@+id/ibtnBorrar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_circle_button"
+            android:backgroundTint="#FF4444"
+            android:contentDescription="@string/rvDesCatEliminar"
+            android:elevation="4dp"
+            android:padding="6dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_bote_basura"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Botón de eliminar -->
-            <ImageButton
-                android:id="@+id/ibtnBorrar"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:background="@drawable/bg_circle_button"
-                android:backgroundTint="#FF4444"
-                android:contentDescription="@string/rvDesCatEliminar"
-                android:elevation="4dp"
-                android:padding="6dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/icon_bote_basura"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Imagen -->
 
-            <!-- Imagen optimizada -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/imageContainer"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="#FAFAFA"
-                app:layout_constraintTop_toBottomOf="@+id/ibtnBorrar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/tvNomCategoria"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintHeight_percent="0.6">
+        <!-- Nombre de la categoría -->
 
-                <ImageView
-                    android:id="@+id/ivCategoria"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerCrop"
-                    android:padding="2dp"
-                    android:contentDescription="@string/rvDescripcionImageCategoria" />
-            </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/ivCategoria"
+            android:layout_width="180dp"
+            android:layout_height="86dp"
+            android:layout_weight="1"
+            android:contentDescription="Image Categoria"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.173" />
 
-            <!-- Título -->
-            <TextView
-                android:id="@+id/tvNomCategoria"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:ellipsize="end"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center"
-                android:maxLines="2"
-                android:text="@string/txtVNombreCategoria"
-                android:textColor="#1A1A1A"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/imageContainer"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+        <TextView
+            android:id="@+id/tvNomCategoria"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@string/txtVNombreCategoria"
+            android:textColor="@color/red_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivCategoria"
+            app:layout_constraintVertical_bias="1.0" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

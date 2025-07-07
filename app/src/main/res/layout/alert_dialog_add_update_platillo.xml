@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:minHeight="140dp"
     android:padding="12dp"
-    android:background="@color/gris_claro"
+    android:background="@drawable/shop_fondo"
     tools:context=".views.platilloscreen.PlatillosActivity">
 
     <!-- Título con fondo moderno -->
@@ -17,10 +17,10 @@
         android:layout_height="100dp"
         android:gravity="center"
         android:text="AGREGAR PLATILLO"
-        android:textSize="24sp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@color/mar_infinito"
-        android:background="@color/mar_infinito"
+        android:textSize="29sp"
+        android:textColor="@android:color/black"
+        android:backgroundTint="@color/gris_claro"
+        android:background="@color/gris_claro"
         android:elevation="4dp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"

@@ -3,6 +3,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.adminrestaurante.databinding.ActivityNavegacionBinding
+import com.example.adminrestaurante.views.cajascreen.CajaPagoActivity
 import com.example.adminrestaurante.views.categoriascreen.CategoriasActivity
 import com.example.adminrestaurante.views.pedidoscreen.PedidosActivityAdmin
 import com.example.adminrestaurante.views.platilloscreen.PlatillosActivity
@@ -28,6 +29,9 @@ class NavegacionActivity : AppCompatActivity() {
         }
         binding.cvUsuarios.setOnClickListener {
             startActivity(Intent(this, UsuariosActivityAdmin::class.java))
+        }
+        binding.cvCajaPago.setOnClickListener {
+            startActivity(Intent(this, CajaPagoActivity::class.java))
         }
     }
 }

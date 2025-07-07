@@ -6,15 +6,23 @@
     android:id="@+id/clRegisterRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_color"
-    android:padding="24dp"
+    android:background="@drawable/restaurant_gradient_background"
     tools:context=".views.registerscreen.RegisterActivity">
 
+    <!-- Overlay semi-transparente para mejor legibilidad -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/overlay_gradient"
+        android:alpha="0.6" />
+
+    <!-- ScrollView principal -->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
+        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,221 +33,348 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
+            android:padding="20dp"
             android:paddingBottom="32dp">
 
-            <!-- Logo con sombra suave -->
+            <!-- Título del restaurante -->
+            <TextView
+                android:id="@+id/tvRestaurantTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Únete a D`ZUASO`S"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:fontFamily="serif"
+                android:letterSpacing="0.1"
+                android:shadowColor="#80000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="4" />
+
+            <!-- Subtítulo -->
+            <TextView
+                android:id="@+id/tvSubtitleRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:text="Crea tu cuenta y disfruta"
+                android:textColor="#E0FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                android:fontFamily="serif"
+                android:shadowColor="#80000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2" />
+
+            <!-- Logo con diseño elegante -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="40dp"
-                app:cardCornerRadius="90dp"
-                app:cardElevation="8dp"
-                app:cardUseCompatPadding="true">
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                app:cardCornerRadius="85dp"
+                app:cardElevation="1dp"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="#FFFFFF"
+                app:strokeWidth="2dp"
+                app:strokeColor="#FFD700">
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="180dp"
-                    android:layout_height="180dp"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
                     android:contentDescription="@string/desc_login_chef"
                     android:scaleType="centerCrop"
+                    android:padding="6dp"
                     app:srcCompat="@drawable/login_chef2" />
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Campo Nombre -->
-            <com.google.android.material.textfield.TextInputLayout
+            <!-- Contenedor de formulario -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardFormRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="@string/hint_nombre"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeColor="@color/primary_color"
-                app:boxBackgroundColor="@color/tertiary_color"
-                app:boxCornerRadiusTopStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:hintTextColor="@color/primary_variant_color"
-                app:startIconDrawable="@android:drawable/ic_menu_edit"
-                app:startIconTint="@color/primary_color">
+                android:layout_marginHorizontal="8dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="10dp"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="#FAFAFA"
+                app:strokeWidth="1dp"
+                app:strokeColor="#E0E0E0">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etNombre"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:paddingVertical="16dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:orientation="vertical"
+                    android:padding="24dp">
 
-            <!-- Campo Apellido Paterno -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="@string/hint_apellidoP"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeColor="@color/primary_color"
-                app:boxBackgroundColor="@color/tertiary_color"
-                app:boxCornerRadiusTopStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:hintTextColor="@color/primary_variant_color"
-                app:startIconDrawable="@android:drawable/ic_menu_edit"
-                app:startIconTint="@color/primary_color">
+                    <!-- Texto de bienvenida -->
+                    <TextView
+                        android:id="@+id/tvWelcomeRegister"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="¡Regístrate ahora!"
+                        android:textColor="#D32F2F"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-medium"
+                        android:textAlignment="center"
+                        android:layout_marginBottom="8dp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etApellidoP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:paddingVertical="16dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:id="@+id/tvRegisterSubtext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Completa tus datos para crear tu cuenta"
+                        android:textColor="#666666"
+                        android:textSize="14sp"
+                        android:textAlignment="center"
+                        android:layout_marginBottom="20dp" />
 
-            <!-- Campo Apellido Materno -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="@string/hint_apellidoM"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeColor="@color/primary_color"
-                app:boxBackgroundColor="@color/tertiary_color"
-                app:boxCornerRadiusTopStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:hintTextColor="@color/primary_variant_color"
-                app:startIconDrawable="@android:drawable/ic_menu_edit"
-                app:startIconTint="@color/primary_color">
+                    <!-- Campo Nombre mejorado -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/hint_nombre"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeWidth="2dp"
+                        app:boxStrokeColor="#D32F2F"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp"
+                        app:hintTextColor="#D32F2F"
+                        app:startIconDrawable="@drawable/ic_restaurant_person"
+                        app:startIconTint="#D32F2F"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="#D32F2F">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etApellidoM"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:paddingVertical="16dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etNombre"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:inputType="textPersonName"
+                            android:textColor="#333333"
+                            android:textSize="16sp"
+                            android:paddingVertical="16dp"
+                            android:paddingHorizontal="16dp"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Campo Teléfono -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="@string/hint_phone"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeColor="@color/primary_color"
-                app:boxBackgroundColor="@color/tertiary_color"
-                app:boxCornerRadiusTopStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:hintTextColor="@color/primary_variant_color"
-                app:startIconDrawable="@android:drawable/stat_sys_phone_call"
-                app:startIconTint="@color/primary_color">
+                    <!-- Campo Apellido Paterno mejorado -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/hint_apellidoP"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeWidth="2dp"
+                        app:boxStrokeColor="#D32F2F"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp"
+                        app:hintTextColor="#D32F2F"
+                        app:startIconDrawable="@drawable/ic_restaurant_person"
+                        app:startIconTint="#D32F2F"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="#D32F2F">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etTelefono"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="phone"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:textSize="16sp"
-                    android:paddingVertical="16dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etApellidoP"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:textColor="#333333"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:paddingVertical="16dp"
+                            android:paddingHorizontal="16dp"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Campo Correo -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="@string/hint_email"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeColor="@color/primary_color"
-                app:boxBackgroundColor="@color/tertiary_color"
-                app:boxCornerRadiusTopStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:hintTextColor="@color/primary_variant_color"
-                app:startIconDrawable="@android:drawable/ic_dialog_email"
-                app:startIconTint="@color/primary_color">
+                    <!-- Campo Apellido Materno mejorado -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/hint_apellidoM"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeWidth="2dp"
+                        app:boxStrokeColor="#D32F2F"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp"
+                        app:hintTextColor="#D32F2F"
+                        app:startIconDrawable="@drawable/ic_restaurant_person"
+                        app:startIconTint="#D32F2F"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="#D32F2F">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:paddingVertical="16dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etApellidoM"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:textColor="#333333"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:paddingVertical="16dp"
+                            android:paddingHorizontal="16dp"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Campo Contraseña -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:hint="@string/hint_password"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeWidth="2dp"
-                app:boxStrokeColor="@color/primary_color"
-                app:passwordToggleEnabled="true"
-                app:boxBackgroundColor="@color/tertiary_color"
-                app:boxCornerRadiusTopStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:hintTextColor="@color/primary_variant_color"
-                app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
-                app:startIconTint="@color/primary_color"
-                app:passwordToggleTint="@color/primary_color">
+                    <!-- Campo Teléfono mejorado -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/hint_phone"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeWidth="2dp"
+                        app:boxStrokeColor="#D32F2F"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp"
+                        app:hintTextColor="#D32F2F"
+                        app:startIconDrawable="@drawable/ic_restaurant_phone"
+                        app:startIconTint="#D32F2F"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="#D32F2F">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:paddingVertical="16dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etTelefono"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone"
+                            android:gravity="center"
+                            android:textColor="#333333"
+                            android:textSize="16sp"
+                            android:paddingVertical="16dp"
+                            android:paddingHorizontal="16dp"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Botón Registrar -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonEnter"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:backgroundTint="@color/primary_color"
-                android:text="@string/strRegister"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingVertical="16dp"
-                app:cornerRadius="12dp"
-                app:elevation="4dp"
-                app:rippleColor="@color/primary_variant_color"
-                style="@style/Widget.MaterialComponents.Button" />
+                    <!-- Campo Correo mejorado -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/hint_email"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeWidth="2dp"
+                        app:boxStrokeColor="#D32F2F"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp"
+                        app:hintTextColor="#D32F2F"
+                        app:startIconDrawable="@drawable/ic_restaurant_email"
+                        app:startIconTint="#D32F2F"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="#D32F2F">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
+                            android:gravity="center"
+                            android:textColor="#333333"
+                            android:textSize="16sp"
+                            android:paddingVertical="16dp"
+                            android:paddingHorizontal="16dp"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Campo Contraseña mejorado -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="24dp"
+                        android:hint="@string/hint_password"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeWidth="2dp"
+                        app:boxStrokeColor="#D32F2F"
+                        app:passwordToggleEnabled="true"
+                        app:boxBackgroundColor="#FFFFFF"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp"
+                        app:hintTextColor="#D32F2F"
+                        app:startIconDrawable="@drawable/ic_restaurant_lock"
+                        app:startIconTint="#D32F2F"
+                        app:passwordToggleTint="#D32F2F">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:textColor="#333333"
+                            android:textSize="16sp"
+                            android:paddingVertical="16dp"
+                            android:gravity="center"
+                            android:paddingHorizontal="16dp"
+                            android:background="@android:color/transparent" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Botón Registrar elegante -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonEnter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:backgroundTint="#D32F2F"
+                        android:text="@string/strRegister"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="false"
+                        android:paddingVertical="16dp"
+                        app:cornerRadius="25dp"
+                        app:elevation="8dp"
+                        app:rippleColor="#B71C1C"
+                        app:icon="@drawable/ic_restaurant_register"
+                        app:iconGravity="textStart"
+                        app:iconPadding="8dp"
+                        app:iconTint="#FFFFFF"
+                        style="@style/Widget.MaterialComponents.Button" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Decoración inferior -->
+            <ImageView
+                android:id="@+id/ivDecorationRegister"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/restaurant_decoration"
+                android:scaleType="centerInside"
+                android:alpha="0.8" />
+
+
+
         </LinearLayout>
+
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

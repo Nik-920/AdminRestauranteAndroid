@@ -19,7 +19,7 @@
     <color name="fuego">#C85540</color>
     <color name="brisa_de_invierno">#BEC3C9</color>
     <color name="amor_secreto">#F1EAE0</color>
-    <color name="petalo_de_girasol">#EDC36D</color>
+    <color name="petalo_de_girasol">#F4FF00</color>
     <color name="valle_dorado">#DFA712</color>
     <color name="mar_infinito">#575755</color>
     <color name="black_strong">#000000</color>
@@ -40,5 +40,92 @@
     <color name="tertiary_color">#e0fade</color>
     <color name="tertiary_variant_color">#c5f2c0</color>
     <color name="tertiary_on_color">#95e78e</color>
+
+    <color name="azul_cielo_claro">#87CEEB</color>
+    <color name="menta_fresca">#98FF98</color>
+    <color name="aqua_marina">#7FFFD4</color>
+    <color name="lavanda_suave">#E6E6FA</color>
+    <color name="verde_bosque">#228B22</color>
+    <color name="azul_profundo">#000080</color>
+    <color name="rosa_coral">#FF7F50</color>
+    <color name="verde_lima">#32CD32</color>
+
+    <color name="gris_pizarra">#708090</color>
+    <color name="beige">#F5F5DC</color>
+    <color name="blanco_roto">#F2F0E6</color>
+    <color name="taupe">#483C32</color>
+    <color name="carbon">#36454F</color>
+    <color name="gris_medio">#808080</color>
+    <color name="marfil">#FFFFF0</color>
+    <color name="gris_azulado">#626D71</color>
+
+    <color name="oro_brillante">#D4AF37</color>
+    <color name="plata_metálica">#C0C0C0</color>
+    <color name="cobre">#B87333</color>
+    <color name="turquesa_vibrante">#40E0D0</color>
+    <color name="magenta_oscuro">#8B008B</color>
+    <color name="azul_real">#4169E1</color>
+    <color name="verde_esmeralda">#50C878</color>
+    <color name="rojo_carmesí">#DC143C</color>
+
+    <color name="fondo_claro_restaurante">#F8F8F8</color>
+    <color name="texto_oscuro_restaurante">#333333</color>
+    <color name="borde_elemento_restaurante">#CCCCCC</color>
+    <color name="sombra_elemento_restaurante">#E0E0E0</color>
+    <color name="exito_restaurante">#4CAF50</color>
+    <color name="advertencia_restaurante">#FFC107</color>
+    <color name="error_restaurante">#F44336</color>
+    <color name="info_restaurante">#2196F3</color>
+
+    <color name="white_opacity_88">#E0FFFFFF</color>
+    <color name="light_grey_form_background">#F8F9FA</color>
+    <color name="divider_grey">#E0E0E0</color>
+    <color name="golden_accent">#FFD700</color>
+
+    <color name="red_primary">#D32F2F</color>
+    <color name="red_dark">#8B0000</color>
+    <color name="red_medium">#DC143C</color>
+    <color name="red_light">#FF6B6B</color>
+    <color name="red_ripple">#B71C1C</color>
+    <color name="creamy_white">#FFFDD0</color>
+    <color name="soft_beige">#F5F5DC</color>
+    <color name="stone_grey">#787878</color>
+    <color name="dark_charcoal">#36454F</color>
+    <color name="sable_brown">#4A4444</color>
+    <color name="warm_gray">#C9BDBB</color>
+    <color name="off_white">#F2F2F2</color>
+    <color name="silver_metallic">#C0C0C0</color>
+    <color name="olive_green_dark">#556B2F</color>
+    <color name="forest_green_deep">#228B22</color>
+    <color name="terracotta_warm">#E2725B</color>
+    <color name="rust_orange">#B7410E</color>
+    <color name="cinnamon_brown">#D2691E</color>
+    <color name="mustard_yellow_muted">#DAA520</color>
+    <color name="sandstone">#D4B892</color>
+    <color name="umber_brown">#634B30</color>
+    <color name="golden_rod">#DAA520</color>
+    <color name="burnt_orange">#CC5500</color>
+    <color name="deep_burgundy">#800020</color>
+    <color name="emerald_accent">#046307</color>
+    <color name="sapphire_blue">#0F52BA</color>
+    <color name="ruby_red">#E0115F</color>
+    <color name="plum_purple">#8E4585</color>
+    <color name="teal_dark">#008080</color>
+    <color name="success_green">#4CAF50</color>
+    <color name="warning_yellow">#FFC107</color>
+    <color name="error_red">#F44336</color>
+    <color name="info_blue">#2196F3</color>
+    <color name="disabled_grey">#E0E0E0</color>
+    <color name="focused_blue">#1976D2</color>
+    <color name="dark_overlay">#CC000000</color>
+    <color name="light_overlay">#80FFFFFF</color>
+    <color name="gradient_start_dark">#60000000</color>
+    <color name="gradient_end_dark">#A0000000</color>
+    <color name="gradient_start_red_soft">#FF8C8C</color>
+    <color name="gradient_end_red_deep">#CD5C5C</color>
+    <color name="texture_light_brown">#D2B48C</color>
+    <color name="texture_dark_grey">#424242</color>
+    <color name="light_blue_action_background">#E3F2FD</color>
+    <color name="light_red_action_background">#FFEBEE</color>
 
 </resources>

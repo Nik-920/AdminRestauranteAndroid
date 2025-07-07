@@ -2,110 +2,99 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="140dp"
-    android:layout_margin="12dp"
-    app:cardBackgroundColor="@android:color/white"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="6dp">
+    android:layout_marginVertical="6dp"
+    android:layout_marginHorizontal="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/white"
+    app:strokeColor="@color/divider_grey"
+    app:strokeWidth="1dp"
+    android:foreground="?android:attr/selectableItemBackground">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:minHeight="140dp"
-        android:padding="16dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <TextView
-            android:id="@+id/tvNombrePlatillo"
-            android:layout_width="248dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="5dp"
-            android:text="Nombre del platillo"
-            android:textColor="#212121"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvNombrePlatillo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nombre del platillo"
+                android:textColor="@color/red_primary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivEditar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="12dp"
+                android:contentDescription="@string/rvDesLapiz"
+                android:src="@drawable/icon_edit"
+                android:background="@color/light_blue_action_background"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                app:tint="@color/info_blue"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.SmallComponent"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivBorrar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/hint_rvDesElminitar"
+                android:src="@drawable/icon_bote_basura"
+                android:background="@color/light_red_action_background"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                app:tint="@color/error_red"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.SmallComponent"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvDescripcionPlatillo"
-            android:layout_width="0dp"
-            android:layout_marginStart="5dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="4dp"
             android:text="Descripción del platillo"
-            android:textColor="#616161"
-            android:textSize="14sp"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvNombrePlatillo" />
+            android:textColor="@color/dark_charcoal"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:maxLines="2"
+            android:ellipsize="end"/>
 
         <TextView
             android:id="@+id/tvCategoriaPlatillo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
             android:text="Categoría: X"
-            android:textColor="#757575"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDescripcionPlatillo" />
+            android:textColor="@color/stone_grey"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvPrecio"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
             android:text="S/ 0.00"
-            android:textColor="#388E3C"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCategoriaPlatillo"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/ivEditar"
-            android:layout_width="29dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/rvDesLapiz"
-            android:src="@drawable/icon_edit"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/ivBorrar"
-            app:layout_constraintHorizontal_bias="0.964"
-            app:layout_constraintStart_toEndOf="@+id/tvNombrePlatillo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/ivBorrar"
-            android:layout_width="41dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="@string/hint_rvDesElminitar"
-            android:src="@drawable/icon_bote_basura"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.986"
-            app:layout_constraintStart_toEndOf="@+id/tvNombrePlatillo"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textColor="@color/success_green"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
