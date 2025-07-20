@@ -33,9 +33,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Imagen -->
-
         <!-- Nombre de la categoría -->
-
         <ImageView
             android:id="@+id/ivCategoria"
             android:layout_width="180dp"
