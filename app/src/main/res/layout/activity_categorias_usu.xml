@@ -7,25 +7,45 @@
     android:layout_height="match_parent"
     android:background="@drawable/pexels"
     android:gravity="center"
+    android:padding="16dp"
     tools:context=".views.categoriascreen.CategoriasActivityUsu">
 
+    <!-- Espacio para el Action Bar -->
+    <View
+        android:id="@+id/actionBarSpace"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- RecyclerView con diseño mejorado -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCategorias"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="16dp"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:background="@drawable/rounded_recyclerview_bg"
+        android:elevation="4dp"
         app:layout_constraintBottom_toTopOf="@+id/llCalificacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="RecycleView"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/actionBarSpace"
+        android:contentDescription="RecycleView" />
 
+    <!-- Sección de calificación mejorada -->
     <LinearLayout
         android:id="@+id/llCalificacion"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@drawable/rounded_rating_bg"
+        android:elevation="6dp"
         app:layout_constraintBottom_toTopOf="@+id/llCuentaTotal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -34,11 +54,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="No se te olvide calificarnos"
-            android:textSize="15sp"
+            android:text="⭐ No se te olvide calificarnos"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            />
+            android:layout_marginBottom="12dp" />
 
         <RatingBar
             android:id="@+id/rbStar"
@@ -51,36 +71,45 @@
 
     </LinearLayout>
 
+    <!-- LinearLayout del total con diseño premium -->
     <LinearLayout
         android:id="@+id/llCuentaTotal"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/green"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_total_cuenta_bg"
         android:gravity="center"
+        android:padding="12dp"
+        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
             android:src="@drawable/icon_carro_compra"
             android:scaleType="centerInside"
-            android:background="@color/secondary_variant_color"
-            android:contentDescription="BotonCarrito"
-            />
+            android:background="@drawable/rounded_button_bg"
+            android:elevation="4dp"
+            android:contentDescription="BotonCarrito" />
 
         <TextView
             android:id="@+id/tvCuentaTotal"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="@color/secondary_variant_color"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_cuenta_bg"
             android:gravity="center"
-            android:hint="VER MI CUENTA"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:hint="💰 VER MI CUENTA"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="20dp"
+            android:elevation="2dp" />
 
     </LinearLayout>
 

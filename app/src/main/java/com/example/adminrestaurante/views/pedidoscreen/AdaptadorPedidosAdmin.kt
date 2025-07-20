@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class AdaptadorPedidosAdmin(
-    private val onClickDetail: (Pedido)->Unit
+    private val onClickElaborado: (Pedido)->Unit
 ) : ListAdapter<AdaptadorPedidosAdmin.ViewModel, AdaptadorPedidosAdmin.VH>(DIFF) {
 
     data class ViewModel(
@@ -48,10 +48,12 @@ class AdaptadorPedidosAdmin(
             val resumen = vm.detalles.joinToString(", ") {
                 "${it.cantidad}×${it.nomPlatillo}"
             }
-            b.tvDetallePlatillos.text = resumen
+            b.tvDetallePlatillos.text = vm.detalles.joinToString(", ") {
+                "${it.cantidad}×${it.nomPlatillo}"
+            }
 
-            // Acción ver detalles
-            b.ivVerDetalles.setOnClickListener { onClickDetail(vm.pedido) }
+            // Acción de que ya se preparo su pedido esta para servir QUIERO IMPLEMENTAR ESTO
+            b.ivPedidoElaborado.setOnClickListener { onClickElaborado(vm.pedido) }
         }
     }
 

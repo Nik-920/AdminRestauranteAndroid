@@ -1,5 +1,4 @@
 package com.example.adminrestaurante.views.platilloscreen
-
 import android.app.AlertDialog
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle

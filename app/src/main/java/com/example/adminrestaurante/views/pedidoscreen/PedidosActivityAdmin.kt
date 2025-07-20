@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.adminrestaurante.databinding.ActivityPedidosBinding
 import com.example.adminrestaurante.models.DetallePedido
 import com.example.adminrestaurante.network.RetrofitClient
+import com.example.adminrestaurante.network.response.EstadoRequest
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class PedidosActivityAdmin : AppCompatActivity() {
     private lateinit var binding: ActivityPedidosBinding
@@ -29,18 +31,22 @@ class PedidosActivityAdmin : AppCompatActivity() {
         }
 
         // RecyclerView
+//        adapter = AdaptadorPedidosAdmin { pedido ->
+//            Toasty.info(this, "PEDIDO ELABORADO ${pedido.idPedido}", Toasty.LENGTH_SHORT).show()
+//        }
+
         adapter = AdaptadorPedidosAdmin { pedido ->
-            Toasty.info(this, "Ver detalles del pedido ${pedido.idPedido}", Toasty.LENGTH_SHORT).show()
+            marcarElaborado(pedido.idPedido)
         }
         binding.rvPedidos.layoutManager = LinearLayoutManager(this)
         binding.rvPedidos.adapter = adapter
 
-        cargarPedidos()
+        obtenerPedidosSinElaborar()
     }
 
-    private fun cargarPedidos() {
+    private fun obtenerPedidosSinElaborar() {
         CoroutineScope(Dispatchers.IO).launch {
-            val pedidosCall = RetrofitClient.webService.obtenerPedidos()
+            val pedidosCall = RetrofitClient.webService.obtenerPedidosSinElaborar()
             val detallesCall = RetrofitClient.webService.obtenerDetalles()
             runOnUiThread {
                 if (pedidosCall.isSuccessful && detallesCall.isSuccessful) {
@@ -57,6 +63,23 @@ class PedidosActivityAdmin : AppCompatActivity() {
                     adapter.submitList(vm)
                 } else {
                     Toasty.error(this@PedidosActivityAdmin, "Error al cargar pedidos", Toasty.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun marcarElaborado(idPedido: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val resp = RetrofitClient.webService.actualizarElaborado(
+                idPedido,
+                EstadoRequest(pedidoElaborado = true)
+            )
+            withContext(Dispatchers.Main) {
+                if (resp.isSuccessful && resp.body()?.codigo == "200") {
+                    Toasty.success(this@PedidosActivityAdmin, "Pedido $idPedido marcado como elaborado", Toasty.LENGTH_SHORT).show()
+                    obtenerPedidosSinElaborar() // refresca estado
+                } else {
+                    Toasty.error(this@PedidosActivityAdmin, "Error al actualizar estado", Toasty.LENGTH_SHORT).show()
                 }
             }
         }

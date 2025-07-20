@@ -9,11 +9,8 @@ data class DetallePedido(
     val idPedido: Int,
     @SerializedName("idPlatillos")
     val idPlatillos: Int,
-
-    // Esta línea es la que te faltaba:
     @SerializedName("nom_platillo")
     val nomPlatillo: String,
-
     @SerializedName("cantidad")
     val cantidad: Int
 )

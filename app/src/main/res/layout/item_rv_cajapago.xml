@@ -39,7 +39,7 @@
             android:textColor="@color/gris_oscuro"
             android:textSize="14sp"
             app:layout_constraintBaseline_toBaselineOf="@id/tvNumeroMesaCaja"
-            app:layout_constraintEnd_toStartOf="@id/ivVerDetallesCaja"
+            app:layout_constraintEnd_toStartOf="@id/ivPagadoPedido"
             app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toEndOf="@id/tvNumeroMesaCaja" />
 
@@ -48,7 +48,7 @@
         <!-- Total -->
 
         <ImageView
-            android:id="@+id/ivVerDetallesCaja"
+            android:id="@+id/ivPagadoPedido"
             android:layout_width="47dp"
             android:layout_height="35dp"
             android:layout_marginTop="1dp"

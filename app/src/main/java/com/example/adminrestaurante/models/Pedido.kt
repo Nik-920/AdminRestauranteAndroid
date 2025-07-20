@@ -7,5 +7,7 @@ data class Pedido(
     @SerializedName("numeroMesa")  val numeroMesa: Int,
     @SerializedName("idUsuario")   val idUsuario: Int,
     @SerializedName("cuentaTotal") val cuentaTotal: Double,
-    @SerializedName("fechaPedido") val fechaPedido: String  // o Date si parseas
+    @SerializedName("pedidoElaborado")   val pedidoElaborado: Boolean?,
+    @SerializedName("pedidoPagado")      val pedidoPagado: Boolean?,
+    @SerializedName("fechaPedido") val fechaPedido: String
 )

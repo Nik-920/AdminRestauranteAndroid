@@ -1,7 +1,6 @@
 package com.example.adminrestaurante.views.categoriascreen
 
 import android.app.AlertDialog
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.adminrestaurante.R
 import com.example.adminrestaurante.databinding.ActivityCategoriasBinding
 import com.example.adminrestaurante.network.RetrofitClient
-import com.example.adminrestaurante.views.navegacionscreen.NavegacionActivity
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

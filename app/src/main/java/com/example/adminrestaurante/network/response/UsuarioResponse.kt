@@ -8,4 +8,4 @@ data class UsuarioResponse(
     @SerializedName("datos")    val datos: ArrayList<Usuario>
 )
 
-//val datos: List<Usuario> = emptyList() // o Usuario si solo devuelve uno
+//val datos: List<Usuario> = emptyList()

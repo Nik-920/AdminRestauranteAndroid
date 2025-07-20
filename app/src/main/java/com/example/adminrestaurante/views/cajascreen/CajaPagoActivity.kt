@@ -1,19 +1,18 @@
 // CajaPagoActivity.kt
 package com.example.adminrestaurante.views.cajascreen
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.adminrestaurante.databinding.ActivityCajaPagoBinding
-import com.example.adminrestaurante.models.DetallePedido
-import com.example.adminrestaurante.models.Pedido
 import com.example.adminrestaurante.network.RetrofitClient
+import com.example.adminrestaurante.network.response.EstadoRequest
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CajaPagoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCajaPagoBinding
@@ -33,7 +32,7 @@ class CajaPagoActivity : AppCompatActivity() {
 
         // Adapter: al ocultar, elimina de la lista actual
         adapter = AdaptadorCaja { pedido ->
-            ocultarPedido(pedido)
+            marcarPagado(pedido.idPedido)
         }
         binding.rvCajaPedidos.layoutManager = LinearLayoutManager(this)
         binding.rvCajaPedidos.adapter = adapter
@@ -59,7 +58,7 @@ class CajaPagoActivity : AppCompatActivity() {
 
     private fun cargarPedidos() {
         CoroutineScope(Dispatchers.IO).launch {
-            val pedidosCall = RetrofitClient.webService.obtenerPedidos()
+            val pedidosCall = RetrofitClient.webService.obtenerPedidosSinPagar()
             val detallesCall = RetrofitClient.webService.obtenerDetalles()
             runOnUiThread {
                 if (pedidosCall.isSuccessful && detallesCall.isSuccessful) {
@@ -81,15 +80,21 @@ class CajaPagoActivity : AppCompatActivity() {
         }
     }
 
-    /** Elimina de la lista visible (oculta el pedido) */
-    private fun ocultarPedido(pedido: Pedido) {
-        // Aqui podrías llamar al backend para marcar como pagado...
-        // RetrofitClient.webService.ocultarPedido(pedido.idPedido) etc.
-
-        // Solo UI: lo quitamos de allViewModels y refrescamos
-        allViewModels.removeAll { it.pedido.idPedido == pedido.idPedido }
-        adapter.submitList(allViewModels.toList())
-        Toasty.success(this, "Pedido ${pedido.idPedido} ocultado", Toasty.LENGTH_SHORT).show()
+    private fun marcarPagado(idPedido: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val resp = RetrofitClient.webService.actualizarPagado(
+                idPedido,
+                EstadoRequest(pedidoPagado = true)
+            )
+            withContext(Dispatchers.Main) {
+                if (resp.isSuccessful && resp.body()?.codigo == "200") {
+                    Toasty.success(this@CajaPagoActivity, "Pedido $idPedido marcado como Pagado", Toasty.LENGTH_SHORT).show()
+                    cargarPedidos() // refresca estado
+                } else {
+                    Toasty.error(this@CajaPagoActivity, "Error al actualizar estado", Toasty.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

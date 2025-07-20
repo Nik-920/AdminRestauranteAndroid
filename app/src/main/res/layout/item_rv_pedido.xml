@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="1dp"
@@ -52,7 +53,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvNumeroMesa" />
-
         <!-- Total de la cuenta -->
         <TextView
             android:id="@+id/tvCuentaTotal"
@@ -68,16 +68,16 @@
 
         <!-- Icono para ver/preparar -->
         <ImageView
-            android:id="@+id/ivVerDetalles"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:id="@+id/ivPedidoElaborado"
+            android:layout_width="48dp"
+            android:layout_height="39dp"
             android:layout_marginTop="8dp"
-            android:src="@drawable/icon_usuarios"
-            android:contentDescription="Ver detalles"
-            app:tint="@color/azul_atlantico"
-            app:layout_constraintTop_toBottomOf="@id/tvDetallePlatillos"
+            android:background="@drawable/verificacion"
+            android:contentDescription="PedidoElaborado"
+            app:layout_constraintBottom_toBottomOf="@id/tvCuentaTotal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/tvCuentaTotal"/>
+            app:layout_constraintTop_toBottomOf="@id/tvDetallePlatillos"
+            app:tint="@color/azul_atlantico" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

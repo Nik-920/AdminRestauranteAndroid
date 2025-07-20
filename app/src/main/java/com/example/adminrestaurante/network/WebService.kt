@@ -1,16 +1,13 @@
 package com.example.adminrestaurante.network
-
 import com.example.adminrestaurante.models.Platillos
 import com.example.adminrestaurante.models.RespuestaPedido
 import com.example.adminrestaurante.models.Usuario
 import com.example.adminrestaurante.network.response.*
 import retrofit2.Response
 import retrofit2.http.*
-
 interface WebService {
 
     /** ─── CATEGORÍAS ───────────────────────────────────────────── **/
-
     @GET("/categorias")
     suspend fun obtenerCategorias(): Response<CategoriaResponse>
 
@@ -74,7 +71,7 @@ interface WebService {
     @POST("/usuarios")
     suspend fun crearUsuario(
         @Body usuario: Usuario
-    ): Response<UsuarioResponse>
+    ): Response<CreateUserResponse>
 
     @PUT("/usuarios/{id}")
     suspend fun actualizarUsuario(
@@ -92,18 +89,28 @@ interface WebService {
 
     @GET("/pedidos")
     suspend fun obtenerPedidos(): Response<PedidoResponse>
+    @GET("/pedidosPagados")
+    suspend fun obtenerPedidosSinPagar(): Response<PedidoResponse>
 
-    @GET("/pedidos/{id}")
-    suspend fun obtenerPedido(
-        @Path("id") idPedido: Int
-    ): Response<PedidoResponse>
-
+    @GET("/pedidosinElaborar")
+    suspend fun obtenerPedidosSinElaborar(): Response<PedidoResponse>
 
     @DELETE("/pedidos/{id}")
     suspend fun borrarPedido(
         @Path("id") idPedido: Int
     ): Response<PedidoResponse>
 
+    @PUT("/pedidos/{id}/elaborado")
+    suspend fun actualizarElaborado(
+        @Path("id") idPedido: Int,
+        @Body body: EstadoRequest
+    ): Response<GenericResponse>
+
+    @PUT("/pedidos/{id}/pagado")
+    suspend fun actualizarPagado(
+        @Path("id") idPedido: Int,
+        @Body body: EstadoRequest
+    ): Response<GenericResponse>
 
 
     @FormUrlEncoded
@@ -111,12 +118,12 @@ interface WebService {
     suspend fun crearPedido(
         @Field("numeroMesa")  numeroMesa: Int,
         @Field("idUsuario")   idUsuario: Int,
-        @Field("cuentaTotal") cuentaTotal: Double      // <-- nuevo campo
+        @Field("cuentaTotal") cuentaTotal: Double
     ): Response<RespuestaPedido>
 
         /** ─── DETALLE PEDIDOS ─── **/
         @FormUrlEncoded
-        @POST("/detalles")            // <-- aquí debe coincidir con tu router: app.post('/detalles', ...)
+        @POST("/detalles")
         suspend fun crearDetalle(
             @Field("idPedido") idPedido: Int,
             @Field("idPlatillos") idPlatillos: Int,

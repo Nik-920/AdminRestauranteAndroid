@@ -14,7 +14,7 @@ import java.util.Locale
 import java.util.TimeZone
 
 class AdaptadorCaja(
-    private val onClickHide: (Pedido) -> Unit
+    private val onClickPagado: (Pedido) -> Unit
 ) : ListAdapter<AdaptadorCaja.ViewModel, AdaptadorCaja.VH>(DIFF) {
 
     data class ViewModel(
@@ -41,7 +41,7 @@ class AdaptadorCaja(
             }
 
             // Al pulsar icono, ocultamos
-            b.ivVerDetallesCaja.setOnClickListener { onClickHide(p) }
+            b.ivPagadoPedido.setOnClickListener { onClickPagado(p) }
         }
     }
 
